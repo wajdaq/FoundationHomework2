@@ -626,6 +626,7 @@ class Tournament:
 
 
 class RLPlayer(Player):
+	import random
 	"""
 	This class represents a reinforcement learning agent.
 	"""
@@ -756,9 +757,26 @@ class RLPlayer(Player):
 		"""		
 		
 		# Homework 2: Implement this method as described in the 
-		# assignment brief.  Write your code here.  
-		
-		pass
+		# assignment brief.  Write your code here.
+		if self.getMode() is TRAINING_MODE:
+			number = random.randint(0,1)
+			if number< self.epsilon:
+				anyMove = random.choice(board.remainingMoves)
+				moveLegal = board.makeMove(anyMove, self.letter)
+
+				if not moveLegal:
+					print('***WARNING ILLEGAL MOVE BY RL***')
+
+			else:
+				self.getRLMove(board)
+
+			self.rewardState(board, self.previousState)
+			self.previousState = board.copy()
+
+		else:
+			self.getRLMove(board)
+
+
 
 	def rewardState(self, board, prevBoard=None):
 		"""
