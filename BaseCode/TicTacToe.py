@@ -788,9 +788,28 @@ class RLPlayer(Player):
 		"""	
 		
 		# Homework 2: Implement this method as described in the 
-		# assignment brief.  Write your code here.  
-		
-		pass
+		# assignment brief.  Write your code here.
+		# check variable names
+		if prevBoard is None:
+			reward = self.getReward(board)
+			#currentKey
+			key = board.getKey(self.letter)
+			#currentValue
+			value = self.valueOfState(key)
+			self.valueFunction[key] = value+self.learningRate*reward
+		else:
+			reward = self.getReward(board)
+			keyCurrent = board.getKey(self.letter)
+			valueCurrent = self.valueOfState(keyCurrent)
+
+			keyPrev = prevBoard.getKey(self.letter)
+			valuePrev = self.valueOfState(keyPrev)
+
+			self.valueFunction[keyPrev] = valuePrev + self.learningRate*(reward+(self.discountRate*valueCurrent)-valuePrev)
+
+
+
+
 
 	def getReward(self, board) :
 		"""
