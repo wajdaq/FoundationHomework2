@@ -17,7 +17,7 @@ PLAYING_MODE = 6
 import random
 
 
-RANDOM_NUMBER_SEED = 9999
+RANDOM_NUMBER_SEED = 35,105
 random.seed(RANDOM_NUMBER_SEED)
 
 
@@ -826,6 +826,29 @@ class RLPlayer(Player):
 		# assignment brief.  Write your code here.  Your are free
 		# to implement new methods as long as they do not over write
 		# existing essential methods.
-				
+
+		RLAgent = Player('x',1)
+		randomAgent = Player('o',2)
+
+
+		# get the rl to play
+		# if win return 15
+		# if lose return -10
+		# if draw return -3
+		board.setPlayers(RLAgent,randomAgent)
+		while not board.isGameOver():
+
+			player = board.next()
+			player.makeMove(board)
+			board.drawBoard()
+
+		if board.getWinner() == 'RLAgent':
+			return 15
+		elif board.getWinner() == 'randomAgent':
+			return -10
+		else:
+			return -5
+
+
 		# Make sure to replace this return state with your own code	
-		return 1
+
