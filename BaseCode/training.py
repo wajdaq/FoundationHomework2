@@ -10,12 +10,12 @@ def main():
 	partner.name = "Random"
 
 	# Training Session 1
-	rlAgent.initTraining(0.67, 0.45, 0.92)
-	ttt.train(rlAgent, partner, 46980)
+	rlAgent.initTraining(0.8, 0.1, 0.3)
+	ttt.train(rlAgent, partner, 45105) #46980
 
 
 	# Training Session 2 Optional
-	# rlAgent.initTraining(0.6, 0.7, 0.2)
+	# rlAgent.initTraining(0.8, 0.1, 0.3)
 	# ttt.train(partner, rlAgent, 45105)
 
 	# max = 1200
