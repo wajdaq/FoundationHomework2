@@ -10,13 +10,13 @@ def main():
 	partner.name = "Random"
 
 	# Training Session 1
-	rlAgent.initTraining(0.8, 0.1, 0.3)
-	ttt.train(rlAgent, partner, 45105) #46980
+	rlAgent.initTraining(0.8, 0.1, 0.4)
+	ttt.train(rlAgent, partner, 47980) #46980
 
 
 	# Training Session 2 Optional
-	# rlAgent.initTraining(0.8, 0.1, 0.3)
-	# ttt.train(partner, rlAgent, 45105)
+	# rlAgent.initTraining(0.8, 0.1, 0.4)
+	# ttt.train(partner, rlAgent, 47980)#45105
 
 	# max = 1200
 	# lst = []
@@ -24,11 +24,12 @@ def main():
 	# 	for j in range(0,10):
 	# 		for k in range(0,10):
 	# 			rlAgent.initTraining(i/10, j/10, k/10)
-	# 			ttt.train(rlAgent, partner, 24052)
+	# 			ttt.train(rlAgent, partner, 1000)
 	# 			if rlAgent.rating> max:
 	# 				print(i,j,k)
 	# 				max = rlAgent.rating
 	# 				lst = [i/10,j/10,k/10]
+	# print(lst)
 	# This method has to be called after all the training sessions are 
 	# done
 	rlAgent.save()
@@ -39,6 +40,7 @@ def main():
 	tournament.start(rlAgent, partner, 5)
 	tournament.start(partner, rlAgent, 5)
 	tournament.printStats([rlAgent, partner])
+
 
 
 main()
