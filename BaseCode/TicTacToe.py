@@ -840,14 +840,13 @@ class RLPlayer(Player):
 
 			player = board.next()
 			player.makeMove(board)
-			board.drawBoard()
 
 		if board.getWinner() == 'RLAgent':
-			return 1
+			return 15
 		elif board.getWinner() == 'randomAgent':
-			return -1
+			return -10
 		else:
-			return 0
+			return -5
 
 
 		# Make sure to replace this return state with your own code	
