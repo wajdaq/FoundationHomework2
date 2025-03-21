@@ -16,8 +16,8 @@ PLAYING_MODE = 6
 
 import random
 
-
-RANDOM_NUMBER_SEED = 35,105
+#35105
+RANDOM_NUMBER_SEED = 153107
 random.seed(RANDOM_NUMBER_SEED)
 
 
@@ -843,11 +843,11 @@ class RLPlayer(Player):
 			board.drawBoard()
 
 		if board.getWinner() == 'RLAgent':
-			return 15
+			return 1
 		elif board.getWinner() == 'randomAgent':
-			return -10
+			return -1
 		else:
-			return -5
+			return 0
 
 
 		# Make sure to replace this return state with your own code	
