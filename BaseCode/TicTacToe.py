@@ -1,3 +1,11 @@
+# [Remas Mira, Wajd AlAkeel]
+# [K23114907, K24028393]
+# Homework 2
+
+# rlAgent.initTraining(0.6, 0.1, 0.2)
+# ttt.train(rlAgent, partner, 25105)
+
+
 """
 Author: Jeffery Raphael
 Date: Feb 2024
@@ -6,12 +14,6 @@ Version: 4.0
 Increase speed of learning by simplifying internal representation
 of game state. Remove minimax & added ability to save policy.
 """
-# [Remas Mira, Wajd AlAkeel]
-# [K23114907, K24028393]
-# Homework 2
-
-# rlAgent.initTraining(0.6, 0.1, 0.2)
-# ttt.train(rlAgent, partner, 25105)
 
 RL_AGENT = 1
 RANDOM_AGENT = 2
