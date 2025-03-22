@@ -10,22 +10,22 @@ def main():
 	partner.name = "Random"
 
 	# Training Session 1
-	rlAgent.initTraining(0.8, 0.1, 0.4)
-	ttt.train(rlAgent, partner, 47980) #46980
+	rlAgent.initTraining(0.6, 0.1, 0.2)
+	ttt.train(rlAgent, partner, 25105) #46980, Best result 25105 - 1292, 45105 - , 47980 - 1280
 
 
 	# Training Session 2 Optional
-	# rlAgent.initTraining(0.8, 0.1, 0.4)
-	# ttt.train(partner, rlAgent, 47980)#45105
-
+	# rlAgent.initTraining(0.6, 0.1, 0.2)
+	# ttt.train(partner, rlAgent, 25105)#45105
+	# #
 	# max = 1200
 	# lst = []
 	# for i in range(0,10):
 	# 	for j in range(0,10):
 	# 		for k in range(0,10):
 	# 			rlAgent.initTraining(i/10, j/10, k/10)
-	# 			ttt.train(rlAgent, partner, 1000)
-	# 			if rlAgent.rating> max:
+	# 			ttt.train(rlAgent, partner, 100)
+	# 			if rlAgent.valueOfState('X') > max:
 	# 				print(i,j,k)
 	# 				max = rlAgent.rating
 	# 				lst = [i/10,j/10,k/10]

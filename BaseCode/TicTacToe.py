@@ -6,6 +6,12 @@ Version: 4.0
 Increase speed of learning by simplifying internal representation
 of game state. Remove minimax & added ability to save policy.
 """
+# [Remas Mira, Wajd AlAkeel]
+# [K23114907, K24028393]
+# Homework 2
+
+# rlAgent.initTraining(0.6, 0.1, 0.2)
+# ttt.train(rlAgent, partner, 25105)
 
 RL_AGENT = 1
 RANDOM_AGENT = 2
@@ -759,8 +765,8 @@ class RLPlayer(Player):
 		# Homework 2: Implement this method as described in the 
 		# assignment brief.  Write your code here.
 		if self.getMode() is TRAINING_MODE:
-			number = random.randint(0,1)
-			if number< self.epsilon:
+			number = random.random()
+			if number < self.epsilon:
 				anyMove = random.choice(board.remainingMoves)
 				moveLegal = board.makeMove(anyMove, self.letter)
 
@@ -789,7 +795,7 @@ class RLPlayer(Player):
 		
 		# Homework 2: Implement this method as described in the 
 		# assignment brief.  Write your code here.
-		# check variable names
+
 		if prevBoard is None:
 			reward = self.getReward(board)
 			#currentKey
@@ -827,27 +833,14 @@ class RLPlayer(Player):
 		# to implement new methods as long as they do not over write
 		# existing essential methods.
 
-		RLAgent = Player('x',1)
-		randomAgent = Player('o',2)
+		winner = board.getWinner()
 
-
-		# get the rl to play
-		# if win return 15
-		# if lose return -10
-		# if draw return -3
-		board.setPlayers(RLAgent,randomAgent)
-		while not board.isGameOver():
-
-			player = board.next()
-			player.makeMove(board)
-
-		if board.getWinner() is RLAgent:
-			return 15
-		elif board.getWinner() is randomAgent:
-			return -10
+		if winner is None:
+			return 0
+		elif winner.letter == self.letter:
+			return 1
 		else:
-			return -5
+			return -1
 
 
-		# Make sure to replace this return state with your own code	
 
