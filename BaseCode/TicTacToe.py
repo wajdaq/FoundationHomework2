@@ -2,8 +2,8 @@
 # [K23114907, K24028393]
 # Homework 2
 
-# rlAgent.initTraining(0.6, 0.1, 0.1)
-# ttt.train(rlAgent, partner, 47980)
+# rlAgent.initTraining(0.8, 0.1, 0.2)
+# ttt.train(rlAgent, partner, 25105
 
 """
 Author: Jeffery Raphael
@@ -839,9 +839,9 @@ class RLPlayer(Player):
 		if winner is None:
 			return 0
 		elif winner.letter == self.letter:
-			return 15
+			return 1
 		else:
-			return -10
+			return -1
 
 
 
