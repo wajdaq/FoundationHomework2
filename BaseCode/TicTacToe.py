@@ -3,7 +3,7 @@
 # Homework 2
 
 # rlAgent.initTraining(0.8, 0.1, 0.2)
-# ttt.train(rlAgent, partner, 25105
+# ttt.train(rlAgent, partner, 47105)
 
 """
 Author: Jeffery Raphael
@@ -24,7 +24,7 @@ PLAYING_MODE = 6
 import random
 
 #35105
-RANDOM_NUMBER_SEED = 153107
+RANDOM_NUMBER_SEED = 553107
 random.seed(RANDOM_NUMBER_SEED)
 
 
@@ -834,14 +834,72 @@ class RLPlayer(Player):
 		# to implement new methods as long as they do not over write
 		# existing essential methods.
 
+		reward = 0
+		reward = self.rewardByMove(board)
 		winner = board.getWinner()
 
 		if winner is None:
-			return 0
+			return reward
 		elif winner.letter == self.letter:
-			return 1
+			return reward+1.0
 		else:
-			return -1
+			return reward-1.0
 
+
+
+	def rewardByMove(self,board):
+		reward = 0
+
+		if board.board[4] == self.letter:
+			reward+=0.5
+
+		for i in range(len(board.board)):
+			if (i%2 == 0 and board.board[i] == self.letter) and not i ==4:
+				reward += 0.3
+			elif i%2 == 0 and not board.board[i] == self.letter:
+				reward -= 0.3
+
+		counter = 0
+		lst1= []
+		for i in range(0,3):
+			lst1.append(board.board[i])
+			lst1.append(board.board[i+3])
+			lst1.append(board.board[i+6])
+			for j in lst1:
+				if j == self.letter:
+					counter+=1
+			if counter>=2:
+				reward+=0.3
+
+		counter = 0
+		lst2 = []
+		for i in range(0, 7,3):
+			lst2.append(board.board[i])
+			lst2.append(board.board[i+1])
+			lst2.append(board.board[i+2])
+			for j in lst1:
+				if j == self.letter:
+					counter += 1
+			if counter >= 2:
+				reward += 0.3
+
+		lst3 = [[],[]]
+		lst3[0].append(board.board[0])
+		lst3[0].append(board.board[4])
+		lst3[0].append(board.board[8])
+
+		lst3[1].append(board.board[2])
+		lst3[1].append(board.board[4])
+		lst3[1].append(board.board[6])
+
+		counter = 0
+		for list in lst3:
+			for i in list:
+				if i == self.letter:
+					counter+=1
+		if counter>=2:
+			reward+=0.3
+
+		return reward
 
 
